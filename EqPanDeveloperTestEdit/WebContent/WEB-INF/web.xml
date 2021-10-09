@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>EqPancreditDeveloperTest</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>ApiServlet</servlet-name>
+		<servlet-class>com.pancredit.api.ApiServlet</servlet-class>
+		<init-param>
+			<param-name>Id</param-name>
+			<param-value>null</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ApplicationId</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Type</param-name>
+			<param-value>null</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Summary</param-name>
+			<param-value>null</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Amount</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PostingDate</param-name>
+			<param-value>null</param-value>
+		</init-param>
+		<init-param>
+			<param-name>IsCleared</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ClearedDate</param-name>
+			<param-value>null</param-value>
+		</init-param>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApiServlet</servlet-name>
+		<url-pattern>/ApiServlet/*</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>AuthorizationFilter</filter-name>
+		<filter-class>com.pancredit.filter.AuthorizationFilter</filter-class>
+
+		<init-param>
+			<param-name>username</param-name>
+			<param-value>equiniti</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>equiniti</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<servlet-name>ApiServlet</servlet-name>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>AuthorizationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+</web-app>
